@@ -44,3 +44,6 @@ cp -r foot/ ~/.config/
 
 # swappy
 cp -r swappy/ ~/.config/
+
+# waybar
+cp -r waybar/ ~/.config/
