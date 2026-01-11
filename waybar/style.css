@@ -1,0 +1,56 @@
+@import "macchiato.css"; /* */
+
+* {
+    font-family: "Ubuntu Sans Mono";
+    font-size: 13px;
+}
+
+window#waybar {
+    background-color: transparent; /* */
+}
+
+#clock,
+#battery,
+#temperature,
+#backlight,
+#pulseaudio,
+#tray,
+#window,
+#cpu,
+#network,
+#memory,
+#workspaces button,
+#privacy-item {
+    color: #ffffff;
+    font-weight: bold;
+    margin: 1px 2px; /* Margen mínimo vertical de 1px */
+    padding: 0px 8px; /* Sin relleno vertical para reducir altura */
+    border-radius: 10px;
+}
+
+#clock,
+#battery,
+#temperature,
+#backlight,
+#pulseaudio,
+#tray,
+#cpu,
+#network,
+#memory,
+#workspaces button {
+    background-color: @surface1; /* */
+}
+
+#workspaces button.active,
+#workspaces button.focused {
+    background-color: @mauve; /* */
+}
+
+#workspaces button.urgent {
+    background-color: @red; /* */
+}
+
+#window label {
+    background-color: transparent;
+    color: #ffffff;
+}

@@ -1,0 +1,116 @@
+[
+    {
+        "name": "bottom",
+        "layer": "top",
+        "position": "top",
+        "modules-left": [
+            "sway/workspaces",
+            "sway/mode"
+        ],
+        "modules-center": [],
+        "modules-right": [
+            "custom/scratchpad_indicator",
+            "clock",
+            "network",
+            "pulseaudio",
+            "memory",
+            "cpu",
+            "tray",
+            "custom/notification"
+        ],
+        "sway/workspaces": {
+            "disable-scroll": true,
+            "format": "{name}"
+        },
+        "custom/scratchpad_indicator": {
+            "interval": 3,
+            "exec": "swaymsg -t get_tree | jq 'recurse(.nodes[]) | first(select(.name==\"__i3_scratch\")) | .floating_nodes | length | select(. >= 1)'",
+            "format": "{} ",
+            "on-click": "swaymsg 'scratchpad show'",
+            "on-click-right": "swaymsg 'move scratchpad'"
+        },
+        "clock": {
+            "format": "{:%m-%d %H:%M}",
+            "format-alt": "{:%m-%d %H:%M}",
+            "tooltip-format": "<b>{:%B %Y}</b>\n\n<tt>{calendar}</tt>",
+            "calendar": {
+                "mode": "year",
+                "mode-mon-col": 3,
+                "weeks-pos": "right",
+                "on-scroll": 1,
+                "format": {
+                    "months": "<span color='#ffead3'><b>{}</b></span>",
+                    "days": "<span color='#ecc6d9'><b>{}</b></span>",
+                    "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+                    "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                    "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+                }
+            },
+            "on-click": "foot calcurse",
+            "on-click-right": "gnome-clocks",
+        },
+        "network": {
+            "format": "{ifname}",
+            "tooltip-format": "{ifname} via {gwaddr}",
+            "format-wifi": " {essid}",
+            "tooltip-format-wifi": "{ifname}\t\t{frequency}GHz\n\n{essid}\t{ipaddr} ({signalStrength}%)",
+            "format-ethernet": " Connected",
+            "tooltip-format-ethernet": "{ifname}\t\t{gwaddr}\n\n{ipaddr}\t{cidr}",
+            "format-disconnected": " Disconnected",
+            "tooltip-format-disconnected": "Disconnected From Network",
+            "max-length": 50,
+            "on-click": "foot iwctl",
+            "on-click-right": "foot iwctl"
+        },
+        "pulseaudio": {
+            "format": " {icon} {volume:2}",
+            "format-bluetooth": " {icon} {volume}% ",
+            "format-muted": " MUTE",
+            "format-icons": {
+                "headphones": "",
+                "default": [
+                    "",
+                    ""
+                ]
+            },
+            "scroll-step": 5,
+            "on-click": "pamixer -t",
+            "on-click-right": "pavucontrol"
+        },
+        "memory": {
+            "interval": 5,
+            "format": " {}%",
+            "on-click": "process_viewer",
+            "on-click-right": "foot btop"
+        },
+        "cpu": {
+            "interval": 5,
+            "format": " {usage:2}%",
+            "on-click": "process_viewer",
+            "on-click-right": "foot btop"
+        },
+        "tray": {
+            "icon-size": 20
+        },
+        "custom/notification": {
+            "tooltip": false,
+            "format": "  {icon} ",
+            "format-icons": {
+                "notification": "🚨",
+                "none": "🧿",
+                "dnd-notification": "🚨",
+                "dnd-none": "🧿",
+                "inhibited-notification": "🚨",
+                "inhibited-none": "🧿",
+                "dnd-inhibited-notification": "🚨",
+                "dnd-inhibited-none": "🧿"
+            },
+            "return-type": "json",
+            "exec-if": "which swaync-client",
+            "exec": "swaync-client -swb",
+            "on-click": "swaync-client -t -sw",
+            "on-click-right": "swaync-client -d -sw",
+            "escape": true
+        }
+    }
+]
