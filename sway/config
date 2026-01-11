@@ -30,8 +30,21 @@ include /etc/sway/config-vars.d/*
 #
 # Example configuration:
 #
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
+    # Monitor Samsung (Izquierda)
+    output HDMI-A-1 pos 0 0 res 1920x1080
+
+    # Monitor HP (Derecha)
+    output DVI-D-1 pos 1920 0 res 1366x768
+    
+    # Fondo para el Samsung (Izquierda)
+    output HDMI-A-1 bg /home/maita/.config/wallpaper/wallpaper2.jpg fill
+
+    # Fondo para el HP (Derecha)
+    output DVI-D-1 bg /home/maita/.config/wallpaper/wallpaper5.jpg fill
+
+    workspace 1 output HDMI-A-1
+    workspace 2 output DVI-D-1
+
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
 ### Idle configuration
@@ -53,7 +66,7 @@ include /etc/sway/config-vars.d/*
 #
 
 input * {
-    xkb_layout "latam"
+    xkb_layout "es"
 }
 
 #   input "2:14:SynPS/2_Synaptics_TouchPad" {
@@ -224,5 +237,13 @@ bindsym $mod+r mode "resize"
 bar {
     swaybar_command waybar
 }
+
+default_border pixel 0
+default_floating_border pixel 0
+smart_borders on
+
+gaps inner 5
+gaps outer 3
+smart_gaps on
 
 include /etc/sway/config.d/*
