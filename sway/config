@@ -16,7 +16,7 @@ set $right l
 # Your preferred terminal emulator
 set $term foot
 # Your preferred application launcher
-set $menu wofi --show drun
+set $menu wofi --show drun --allow-images
 
 include /etc/sway/config-vars.d/*
 
@@ -40,7 +40,7 @@ include /etc/sway/config-vars.d/*
     output HDMI-A-1 bg /home/maita/.config/wallpaper/wallpaper2.jpg fill
 
     # Fondo para el HP (Derecha)
-    output DVI-D-1 bg /home/maita/.config/wallpaper/wallpaper5.jpg fill
+    output DVI-D-1 bg /home/maita/.config/wallpaper/wallpaper2.jpg fill
 
     workspace 1 output HDMI-A-1
     workspace 2 output DVI-D-1
@@ -245,5 +245,7 @@ smart_borders on
 gaps inner 5
 gaps outer 3
 smart_gaps on
+
+seat * xcursor_theme "BreezeX-RosePine-Linux" 30
 
 include /etc/sway/config.d/*
