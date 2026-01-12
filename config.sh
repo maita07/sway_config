@@ -47,3 +47,9 @@ cp -r swappy/ ~/.config/
 
 # waybar
 cp -r waybar/ ~/.config/
+
+#qt
+cp -r qt5ct/ ~/.config/
+
+#cursor
+cp -r .icons/ ~/
