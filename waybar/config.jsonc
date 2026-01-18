@@ -15,6 +15,8 @@
             "pulseaudio",
             "memory",
             "cpu",
+	    "temperature",
+	    "temperature#gpu",
             "tray",
             "custom/notification"
         ],
@@ -89,6 +91,18 @@
             "on-click": "process_viewer",
             "on-click-right": "foot btop"
         },
+	"temperature": {
+	    "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+            "critical-threshold": 100,
+            "format": "{icon} {temperatureC}°C",
+            "format-icons": ["", "", ""]
+	},
+	"temperature#gpu": {
+            "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
+            "critical-threshold": 100,
+            "format": "GPU {icon} {temperatureC}°C",
+            "format-icons": ["", "", ""]
+},
         "tray": {
             "icon-size": 20
         },
