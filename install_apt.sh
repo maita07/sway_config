@@ -1,31 +1,29 @@
 #!/bin/bash
 
-# Set of packages and configurations for i3wm customized to my liking.
+# Script para Sway en CachyOS (proveniente de XFCE)
 
-# Update package lists and install necessary packages
-sudo apt update && sudo apt install -y i3 fastfetch btop pavucontrol sway swaylock swayidle wl-clipboard xwayland foot waybar wofi swaybg xdg-desktop-portal-hyprland polkit-kde-agent-1 qt6-wayland qt6ct qt5ct nwg-look grim slurp swappy fonts-font-awesome fonts-firacode
+# Actualizar e instalar paquetes necesarios
+# Se incluyen qt-wayland y polkit-gnome ya que XFCE no los garantiza para Wayland
+sudo pacman -Syu --noconfirm
+sudo pacman -S --needed --noconfirm fastfetch btop pavucontrol sway swaylock swayidle wl-clipboard xorg-xwayland foot waybar wofi swaybg nwg-look grim slurp swappy ttf-font-awesome ttf-fira-code qt5-wayland qt6-wayland qt5ct qt6ct polkit-gnome xdg-desktop-portal-wlr
 
 while true; do
     read -p "¿Quiere instalar brightnessctl? (notebooks) [s/n]: " respuesta
-    
-    # Convertir a minúscula para facilitar la comparación
     respuesta=$(echo "$respuesta" | tr '[:upper:]' '[:lower:]')
 
     case "$respuesta" in
         [s]* ) 
-            echo "Iniciando la instalación de brightnessctl..."
-            sudo apt update && sudo apt install -y brightnessctl
-	    # Add current user to the video group for brightness control
-	    sudo usermod -aG video $USER
+            echo "Instalando brightnessctl..."
+            sudo pacman -S --needed --noconfirm brightnessctl
+            sudo usermod -aG video $USER
             break
             ;;
         [n]* ) 
-            echo "Instalación omitida por el usuario."
+            echo "Omitido."
             break
             ;;
         * ) 
-            echo "Error: Respuesta no válida. Por favor, ingrese 's' para Sí o 'n' para No."
-            echo "----------------------------------------------------------------"
+            echo "Respuesta no válida."
             ;;
     esac
 done
