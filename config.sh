@@ -53,3 +53,10 @@ cp -r qt5ct/ ~/.config/
 
 #cursor
 cp -r .icons/ ~/
+
+#git config
+git config --global user.name "maita"
+git config --global user.email "josemaitapitado@gmail.com"
+ssh-keygen -t ed25519 -C "josemaitapitado@gmail.com"
+echo "Clave para github"
+cat ~/.ssh/id_ed25519.pub
